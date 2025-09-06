@@ -125,3 +125,11 @@ main {
     transform: translateX(-50%);
     top: -1rem;
 }
+
+.order-buttons {
+    margin-top: 1rem;
+}
+
+button.small {
+    width: 25%;
+}
