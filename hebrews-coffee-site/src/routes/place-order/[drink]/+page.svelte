@@ -1,10 +1,17 @@
 <script>
+	import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
+
+    import { uppercaseComplexString } from '$lib/utils/helpers.js';
+    import { storedOrder, updatePersistedStore } from '$lib/stores/storedOrder.js';
+    import '$lib/styles/app.css';
+
     export let data;
     export let drink = data.drink;
 
     let espressoOptions = ['Regular Espresso', 'Decaf Espresso'];
     let milkOptions = ['Whole Milk', '2% Milk', 'Half and Half', 'Oat Milk', 'Coconut Milk'];
-    let flavorOptions = ['Vanilla', 'Caramel', 'Hazelnut', 'Mocha', 'Cinnamon', 'Macadamia Nut', 'Simple Syrup', 'No Flavor'];
+    let flavorOptions = ['No Flavor', 'Vanilla', 'Caramel', 'Hazelnut', 'Mocha', 'Cinnamon', 'Macadamia Nut', 'Simple Syrup'];
 
     const customizationOptions = {
         'latte' : {hot: true, iced: true, espresso: true, milk: true, flavor: true},
@@ -17,37 +24,58 @@
         'iced-tea' : {hot: false, iced: true, espresso: false, milk: false, flavor: true}
     }
 
-    $: options = customizationOptions[drink] ?? {hot: true, iced: true, espresso: true, milk: true, flavor: true};
-    $: temp = options.hot;
-    
-    function formatDrinkName(name) {
-        return name.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+    let options = customizationOptions[drink] ?? {hot: true, iced: true, espresso: true, milk: true, flavor: true};
+
+    let order = {
+        drink: drink,
+        temp: $storedOrder.temp ? $storedOrder.temp : (options.hot ? 'hot' : 'iced'),
+        espresso: $storedOrder.espresso,
+        milk: $storedOrder.milk,
+        flavor: $storedOrder.flavor
+    };
+
+    onMount(() => {
+        var updateTriggers = document.getElementsByClassName('customizer-select');
+        for (var trigger of updateTriggers) {
+            trigger.addEventListener('change', () => {
+                updatePersistedStore(order);
+                console.log('Stored Order Updated:', $storedOrder);
+            });
+        }
+    });
+
+    function stageOrder() {
+        //Save the current order to the store
+        storedOrder.set(order);
+
+        // Redirect to the order confirmation page
+        goto('/place-order/${drink}/confirm');
     }
 </script>
 
-<h1>{formatDrinkName(drink)}</h1>
+<h1>{uppercaseComplexString(drink)}</h1>
 
 <div class="temp-select">
 {#if options.hot}
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <button on:click={() => temp = true} class="temp-button">
+    <button on:click={() => order.temp = 'hot'} class="temp-button">
         <!-- svelte-ignore a11y_missing_attribute -->
         <img 
-        src={temp ? "/icons/hot_selected.svg" : "/icons/hot_deselected.svg"}>
+        src={order.temp === 'hot' ? "/icons/hot_selected.svg" : "/icons/hot_deselected.svg"}>
     </button>
 {/if}
 
 {#if options.iced}
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <button on:click={() => temp = false} class="temp-button">
+    <button on:click={() => order.temp = 'iced'} class="temp-button">
         <!-- svelte-ignore a11y_missing_attribute -->
         <img 
-        src={!temp ? "/icons/iced_selected.svg" : "/icons/iced_deselected.svg"}>
+        src={order.temp === 'iced' ? "/icons/iced_selected.svg" : "/icons/iced_deselected.svg"}>
     </button>
 {/if}
 </div>
 
-{#if !temp}
+{#if order.temp === 'iced' && options.iced}
     <h2>Iced</h2>
 {:else}
     <h2>Hot</h2>
@@ -56,7 +84,7 @@
 <div class="drop-options">
     {#if options.espresso}
         <div class="customizer-select">
-            <select id="espresso" bind:value={drink.espresso}>
+            <select id="espresso" bind:value={order.espresso}>
                 {#each espressoOptions as option}
                     <option value={option}>{option}</option>
                 {/each}
@@ -72,7 +100,7 @@
 
     {#if options.milk}
         <div class="customizer-select">
-            <select id="milk" bind:value={drink.milk}>
+            <select id="milk" bind:value={order.milk}>
                 {#each milkOptions as option}
                     <option value={option}>{option}</option>
                 {/each}
@@ -88,7 +116,7 @@
 
     {#if options.flavor}
         <div class="customizer-select">
-            <select id="flavor" bind:value={drink.flavor}>
+            <select id="flavor" bind:value={order.flavor}>
                 {#each flavorOptions as option}
                     <option value={option}>{option}</option>
                 {/each}
@@ -103,5 +131,6 @@
     {/if}
 </div>
 
-<div>
+<div class="order-buttons">
+<button class="bar-button small" on:click={stageOrder}>Review Order</button>
 </div>
