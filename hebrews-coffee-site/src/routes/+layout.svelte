@@ -1,10 +1,8 @@
 <script>
-	import '../app.css';
-	import { sideMenuOpen } from '../lib/stores.js';
+	import { sideMenuOpen } from '../lib/stores/stores.js';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
-	import 'bootstrap/dist/css/bootstrap.min.css';
 	import '$lib/styles/app.css';
 
 	let buttonArea;

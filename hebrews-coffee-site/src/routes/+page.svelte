@@ -1,7 +1,3 @@
-<script>
-        import { sideMenuOpen } from '$lib/stores';
-</script>
-
 <div class="order-buttons">
         <a class="bar-button" href="/place-order">
                 Place Order
