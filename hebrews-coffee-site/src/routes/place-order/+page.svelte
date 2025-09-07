@@ -1,3 +1,11 @@
+<script>
+    import '$lib/styles/app.css';
+    import { onMount } from 'svelte';
+    import { clearStoredOrder } from '$lib/stores/storedOrder';
+
+    onMount(() => { clearStoredOrder(); });
+</script>
+
 <h1 style="margin-top: 1rem;">Place Order</h1>
 <div class="order-buttons">
     <a class="bar-button" href="/place-order/latte">Latte</a>
