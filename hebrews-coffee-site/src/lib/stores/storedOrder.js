@@ -1,32 +1,29 @@
 import { writable }  from 'svelte/store';
 import { browser } from '$app/environment';
 
-function createPersistedStore() {
-      //SSR guard
-      if (!browser) {
-         return writable({temp: 'hot', espresso: 'Regular Espresso', milk: 'Whole Milk', flavor: 'No Flavor'});
+const defaultOrder = {
+      drink: '',
+      temp: 'hot', 
+      espresso: 'regular-espresso', 
+      milk: 'whole-milk', 
+      flavor: 'no-flavor'
+};
+
+export const storedOrder = writable(defaultOrder);
+
+if (browser) {
+      const stored = localStorage.getItem('storedOrder');
+      if (stored) {
+            storedOrder.set(JSON.parse(stored));
       }
 
-      // Initialize store with value from localStorage if available, else use default values
-      const stored = localStorage.getItem('storedOrder');
-      const initial = stored ? JSON.parse(stored) : {temp: 'hot', espresso: 'Regular Espresso', milk: 'Whole Milk', flavor: 'No Flavor'};
-      const store = writable(initial);
-
-      // Subscribe to store changes and persist to localStorage
-      store.subscribe((value) => {
-            if (value) {
-                  localStorage.setItem('storedOrder', JSON.stringify(value));
-            }
-            else {
-                  localStorage.removeItem('storedOrder');   
-            }
+      storedOrder.subscribe((value) => {
+            localStorage.setItem('storedOrder', JSON.stringify(value));
       });
-      return store;
 }
 
-export function updatePersistedStore(newOrder) {
-      storedOrder.set(newOrder);
-      localStorage.setItem('storedOrder', JSON.stringify(newOrder));
-      console.log("Updated persisted store:", newOrder);
+export function clearStoredOrder() {
+      console.log('Clearing');
+      storedOrder.set(defaultOrder);
+      localStorage.removeItem('storedOrder');
 }
-export const storedOrder = writable(createPersistedStore());
