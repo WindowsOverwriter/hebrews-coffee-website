@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
+    import { base } from '$app/paths';
 
     import { uppercaseComplexString } from '$lib/utils/helpers.js';
     import { storedOrder } from '$lib/stores/storedOrder.js';
@@ -49,8 +50,8 @@
                     on:click={() => storedOrder.update(o => ({...o, temperature:'hot'}))} 
                     class="temp-button">
                         <img src={$storedOrder.temperature === 'hot' 
-                        ? "/icons/hot_selected.svg" 
-                        : "/icons/hot_deselected.svg"} 
+                        ? "{base}/icons/hot_selected.svg" 
+                        : "{base}/icons/hot_deselected.svg"} 
                         alt="hot drink selector">
                     </button>
                 {/if}
@@ -60,8 +61,8 @@
                     on:click={() => storedOrder.update(o => ({...o, temperature:'iced'}))} 
                     class="temp-button">
                         <img src={$storedOrder.temperature === 'iced' 
-                        ? "/icons/iced_selected.svg" 
-                        : "/icons/iced_deselected.svg"} 
+                        ? "{base}/icons/iced_selected.svg" 
+                        : "{base}/icons/iced_deselected.svg"} 
                         alt="iced drink selector">
                     </button>
                 {/if}
@@ -86,7 +87,7 @@
                     </select>
 
                     <span class="drop-arrow">
-                        <img src="/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
+                        <img src="{base}/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
                     </span>
 
                     <span class="border-text">Espresso</span>
@@ -102,7 +103,7 @@
                     </select>
 
                     <span class="drop-arrow">
-                        <img src="/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
+                        <img src="{base}/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
                     </span>
 
                     <span class="border-text">Milk</span>
@@ -118,7 +119,7 @@
                     </select>
 
                     <span class="drop-arrow">
-                        <img src="/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
+                        <img src="{base}/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
                     </span>
 
                     <span class="border-text">Flavor</span>

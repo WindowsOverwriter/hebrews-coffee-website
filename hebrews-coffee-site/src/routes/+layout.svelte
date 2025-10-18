@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
+	import { base } from '$app/paths';
 	import '$lib/styles/app.css';
 
 	let buttonArea;
@@ -46,10 +47,10 @@
 		on:click={() => sideMenuOpen.set(true)}
 		bind:this={buttonArea}
 	>
-		<img src="/icons/hamburger_menu.svg" alt="Menu" />
+		<img src="{base}/icons/hamburger_menu.svg" alt="Menu" />
 	</button>
 
-	<a class="logo-button" href="/"><img src="/logo.svg" alt="Hebrews Coffee Logo" class="logo" /></a>
+	<a class="logo-button" href="/"><img src="{base}/icons/logo.svg" alt="Hebrews Coffee Logo" class="logo" /></a>
 
 	<div class="login-link">
 		<a href="/login">LOGIN</a>
@@ -58,7 +59,7 @@
 
 <div class="side-menu" class:open={$sideMenuOpen} bind:this={menuArea}>
 	<button class="menu-close-icon" on:click={() => sideMenuOpen.set(false)}>
-		<img src="/icons/x_icon.svg" alt="Close Menu" />
+		<img src="{base}/icons/x_icon.svg" alt="Close Menu" />
 	</button>
 
 	<nav>

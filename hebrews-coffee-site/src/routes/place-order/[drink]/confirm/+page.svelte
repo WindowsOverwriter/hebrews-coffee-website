@@ -96,7 +96,7 @@
                 </select>
 
                 <span class="drop-arrow">
-                    <img src="/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
+                    <img src="{base}/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow">
                 </span>
 
                 <span class="border-text">Choose Pickup Time:</span>
