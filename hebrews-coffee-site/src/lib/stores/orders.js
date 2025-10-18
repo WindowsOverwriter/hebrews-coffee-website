@@ -2,7 +2,7 @@ import { writable } from "svelte/store";
 
 export const orders = writable([]);
 
-const API_URL = "http://127.0.0.1:5000/api/orders"; //IMPORTANT: Update to Render URL when deployed
+const API_URL = "https://hebrews-coffee-website.onrender.com";
 
 export async function fetchOrders() {
   try {
