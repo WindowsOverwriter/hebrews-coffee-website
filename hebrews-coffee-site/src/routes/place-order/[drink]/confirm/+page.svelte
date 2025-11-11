@@ -4,7 +4,8 @@
       import { clearStoredOrder, storedOrder } from '$lib/stores/storedOrder.js';
       import { addOrder } from '$lib/stores/orders.js';
       import { uppercaseComplexString } from '$lib/utils/helpers.js';
-	import { onMount } from 'svelte';
+	  import { onMount } from 'svelte';
+      import { base } from '$app/paths';
 
       let submit_failed = false;
 
@@ -45,21 +46,18 @@
           // Add the order to the store
           addOrder($storedOrder);
 
-         //Create success page URL
-         const confirmPage = '/place-order/' + $storedOrder.drink + '/confirm/order-confirmation';
-
          // Clear the stored order
           clearStoredOrder();
 
           // Redirect to the order confirmation page
-          goto(confirmPage);
+          goto(`${base}/place-order/${$storedOrder.drink}/confirm/order-confirmation`);
     }
 
     function editOrder() {
         console.log($storedOrder.drink)
         // Redirect back to the drink customization page
-        const orderPage = '/place-order/' + $storedOrder.drink.toLowerCase().replace(/ /g, '-');
-        goto(orderPage);
+        const orderPage = $storedOrder.drink.toLowerCase().replace(/ /g, '-');
+        goto(`${base}/place-order/${orderPage}`);
     }
 
     onMount (() => {$storedOrder.time_slot = setNextAvailableTime();});

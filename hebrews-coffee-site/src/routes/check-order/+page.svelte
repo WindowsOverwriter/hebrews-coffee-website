@@ -1,1 +1,1 @@
-<h1>Check Order Page Under Construction</h1>
+<h1>Sorry, this page is not available for your project</h1>

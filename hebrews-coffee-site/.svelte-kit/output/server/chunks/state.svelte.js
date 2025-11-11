@@ -1,5 +1,5 @@
 import "clsx";
-import { S as noop } from "./index.js";
+import { T as noop } from "./index.js";
 const is_legacy = noop.toString().includes("$$") || /function \w+\(\) \{\}/.test(noop.toString());
 if (is_legacy) {
   ({

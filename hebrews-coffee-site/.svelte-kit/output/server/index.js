@@ -2,15 +2,14 @@ import { B as BROWSER } from "./chunks/false.js";
 import { json, text, error } from "@sveltejs/kit";
 import { HttpError, SvelteKitError, Redirect, ActionFailure } from "@sveltejs/kit/internal";
 import { with_request_store, merge_tracing } from "@sveltejs/kit/internal/server";
-import { a as assets, b as base, c as app_dir, o as override, r as reset } from "./chunks/environment.js";
+import { a as assets, b as base, c as app_dir, r as reset } from "./chunks/paths.js";
 import * as devalue from "devalue";
 import { m as make_trackable, d as disable_search, a as decode_params, r as readable, w as writable, v as validate_layout_server_exports, b as validate_layout_exports, c as validate_page_server_exports, e as validate_page_exports, n as normalize_path, f as resolve, g as decode_pathname, h as validate_server_exports } from "./chunks/exports.js";
-import { b as base64_encode, t as text_decoder, a as text_encoder, g as get_relative_path } from "./chunks/utils.js";
+import { b as base64_encode, t as text_decoder, a as text_encoder } from "./chunks/utils.js";
 import { p as public_env, r as read_implementation, o as options, s as set_private_env, a as set_public_env, g as get_hooks, b as set_read_implementation } from "./chunks/internal.js";
 import { s as stringify, p as parse_remote_arg, T as TRAILING_SLASH_PARAM, I as INVALIDATED_PARAM } from "./chunks/shared.js";
 import { parse, serialize } from "cookie";
 import * as set_cookie_parser from "set-cookie-parser";
-const SVELTE_KIT_ASSETS = "/_svelte_kit_assets";
 const ENDPOINT_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"];
 const PAGE_METHODS = ["GET", "POST", "HEAD"];
 function negotiate(accept, types) {
@@ -1407,7 +1406,7 @@ function exec(match, params, matchers) {
 }
 function generate_route_object(route, url, manifest) {
   const { errors, layouts, leaf } = route;
-  const nodes = [...errors, ...layouts.map((l) => l?.[1]), leaf[1]].filter((n) => typeof n === "number").map((n) => `'${n}': () => ${create_client_import(manifest._.client.nodes?.[n], url)}`).join(",\n		");
+  const nodes = [...errors, ...layouts.map((l) => l?.[1]), leaf[1]].filter((n) => typeof n === "number").map((n) => `'${n}': () => ${create_client_import(manifest._.client.nodes?.[n])}`).join(",\n		");
   return [
     `{
 	id: ${s(route.id)}`,
@@ -1428,9 +1427,9 @@ function create_client_import(import_path, url) {
   if (assets !== "") {
     return `import('${assets}/${import_path}')`;
   }
-  let path = get_relative_path(url.pathname, `${base}/${import_path}`);
-  if (path[0] !== ".") path = `./${path}`;
-  return `import('${path}')`;
+  {
+    return `import('${base}/${import_path}')`;
+  }
 }
 async function resolve_route(resolved_path, url, manifest) {
   if (!manifest._.client.routes) {
@@ -1477,8 +1476,7 @@ function create_css_import(route, url, manifest) {
   if (!css) return "";
   return `${create_client_import(
     /** @type {string} */
-    manifest._.client.start,
-    url
+    manifest._.client.start
   )}.then(x => x.load_css([${css}]));`;
 }
 const updated = {
@@ -1519,18 +1517,6 @@ async function render_response({
   let base$1 = base;
   let assets$1 = assets;
   let base_expression = s(base);
-  {
-    if (!state.prerendering?.fallback) {
-      const segments = event.url.pathname.slice(base.length).split("/").slice(2);
-      base$1 = segments.map(() => "..").join("/") || ".";
-      base_expression = `new URL(${s(base$1)}, location).pathname.slice(0, -1)`;
-      if (!assets || assets[0] === "/" && assets !== SVELTE_KIT_ASSETS) {
-        assets$1 = base$1;
-      }
-    } else if (options2.hash_routing) {
-      base_expression = "new URL('.', location).pathname.slice(0, -1)";
-    }
-  }
   if (page_config.ssr) {
     const props = {
       stores: {
@@ -1566,7 +1552,6 @@ async function render_response({
       form: form_value,
       state: {}
     };
-    override({ base: base$1, assets: assets$1 });
     const render_opts = {
       context: /* @__PURE__ */ new Map([
         [

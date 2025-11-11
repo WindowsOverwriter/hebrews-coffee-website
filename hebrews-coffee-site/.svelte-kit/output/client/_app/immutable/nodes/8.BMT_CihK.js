@@ -1,1 +1,0 @@
-import"../chunks/DsnmJJEf.js";import"../chunks/B298ACMR.js";import{f as a,a as t,$ as e}from"../chunks/DN-Y5FX1.js";/* empty css                */var s=a('<h1>Your order was placed successfully</h1> <div class="order-buttons"><a class="bar-button" href="/">Return to Home</a></div>',1);function f(o){var r=s();e(2),t(o,r)}export{f as component};

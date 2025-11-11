@@ -1785,6 +1785,9 @@ function render(component, options = {}) {
     abort();
   }
 }
+function stringify(value) {
+  return typeof value === "string" ? value : value == null ? "" : value + "";
+}
 function attr_class(value, hash, directives) {
   var result = to_class(value, hash, directives);
   return result ? ` class="${escape_html(result, true)}"` : "";
@@ -1848,22 +1851,23 @@ export {
   pop as B,
   COMMENT_NODE as C,
   current_component as D,
-  attr_class as E,
-  store_get as F,
-  slot as G,
+  attr as E,
+  attr_class as F,
+  store_get as G,
   HYDRATION_ERROR as H,
-  unsubscribe_stores as I,
-  getContext as J,
-  escape_html as K,
+  slot as I,
+  unsubscribe_stores as J,
+  stringify as K,
   LEGACY_PROPS as L,
-  fallback as M,
-  store_mutate as N,
-  bind_props as O,
-  ensure_array_like as P,
-  attr as Q,
-  maybe_selected as R,
-  noop as S,
-  safe_not_equal as T,
+  getContext as M,
+  escape_html as N,
+  fallback as O,
+  store_mutate as P,
+  bind_props as Q,
+  ensure_array_like as R,
+  maybe_selected as S,
+  noop as T,
+  safe_not_equal as U,
   set_active_effect as a,
   active_effect as b,
   active_reaction as c,

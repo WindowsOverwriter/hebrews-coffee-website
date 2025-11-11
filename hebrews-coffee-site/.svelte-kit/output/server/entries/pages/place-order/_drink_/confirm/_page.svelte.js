@@ -1,4 +1,4 @@
-import { F as store_get, P as ensure_array_like, K as escape_html, Q as attr, R as maybe_selected, I as unsubscribe_stores, B as pop, z as push } from "../../../../../chunks/index.js";
+import { G as store_get, R as ensure_array_like, N as escape_html, E as attr, S as maybe_selected, K as stringify, J as unsubscribe_stores, B as pop, z as push } from "../../../../../chunks/index.js";
 import "@sveltejs/kit/internal";
 import "../../../../../chunks/exports.js";
 import "../../../../../chunks/utils.js";
@@ -39,7 +39,7 @@ function _page($$payload, $$props) {
     }
     $$payload.out.push(`<!--]-->`);
     $$payload.select_value = void 0;
-    $$payload.out.push(`</select> <span class="drop-arrow"><img src="/icons/simple_tailless_nav_arrow.svg" alt="Dropdown Arrow"/></span> <span class="border-text">Choose Pickup Time:</span></div> `);
+    $$payload.out.push(`</select> <span class="drop-arrow"><img${attr("src", `${stringify(base)}/icons/simple_tailless_nav_arrow.svg`)} alt="Dropdown Arrow"/></span> <span class="border-text">Choose Pickup Time:</span></div> `);
     {
       $$payload.out.push("<!--[!-->");
     }

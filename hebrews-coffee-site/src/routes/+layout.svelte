@@ -50,10 +50,10 @@
 		<img src="{base}/icons/hamburger_menu.svg" alt="Menu" />
 	</button>
 
-	<a class="logo-button" href="/"><img src="{base}/icons/logo.svg" alt="Hebrews Coffee Logo" class="logo" /></a>
+	<a class="logo-button" href="{base}/"><img src="{base}/icons/logo.svg" alt="Hebrews Coffee Logo" class="logo" /></a>
 
 	<div class="login-link">
-		<a href="/login">LOGIN</a>
+		<a href="{base}/login">LOGIN</a>
 	</div>
 </header>
 
@@ -63,12 +63,12 @@
 	</button>
 
 	<nav>
-		<a href="/">Home</a>
-		<a href="/place-order">Place Order</a>
-		<a href="/check-order">Check Order Status</a>
+		<a href="{base}/">Home</a>
+		<a href="{base}/place-order">Place Order</a>
+		<a href="{base}/check-order">Check Order Status</a>
 	</nav>
 
-	<div id="login"><a href="/login">Login</a></div>
+	<div id="login"><a href="{base}/login">Login</a></div>
 </div>
 
 <main>

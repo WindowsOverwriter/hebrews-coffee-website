@@ -33,9 +33,8 @@
     onMount(() => { mounted = true; });
 
     function stageOrder() {
-        const confirmPage = '/place-order/' + $storedOrder.drink + '/confirm';
         // Redirect to the order confirmation page
-        goto(confirmPage);
+        goto(`${base}/place-order/${$storedOrder.drink}/confirm`);
     }
 </script>
 

@@ -1,0 +1,1 @@
+import"../chunks/DsnmJJEf.js";import"../chunks/0z1sJvhk.js";import{f as t,a}from"../chunks/4tRy_9DW.js";var e=t("<h1>Check Order Page Under Construction</h1>");function h(o){var r=e();a(o,r)}export{h as component};

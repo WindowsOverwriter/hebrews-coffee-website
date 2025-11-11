@@ -26,7 +26,8 @@ const config = {
 			fallback: null
 		}),
 		paths: {
-			base: '/hebrews-coffee-site'
+			base: '/hebrews-coffee-site',
+			relative: false
 		}
 	}
 };

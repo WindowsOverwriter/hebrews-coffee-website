@@ -6,12 +6,13 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
-      "_environment.js"
+      "_environment.js",
+      "_paths.js"
     ]
   },
-  "_app.CBURLyFJ.css": {
-    "file": "_app/immutable/assets/app.CBURLyFJ.css",
-    "src": "_app.CBURLyFJ.css"
+  "_app.p1yRLc4W.css": {
+    "file": "_app/immutable/assets/app.p1yRLc4W.css",
+    "src": "_app.p1yRLc4W.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -40,8 +41,13 @@
     "name": "internal",
     "imports": [
       "_index.js",
-      "_environment.js"
+      "_environment.js",
+      "_paths.js"
     ]
+  },
+  "_paths.js": {
+    "file": "chunks/paths.js",
+    "name": "paths"
   },
   "_shared.js": {
     "file": "chunks/shared.js",
@@ -76,6 +82,7 @@
     "imports": [
       "_shared.js",
       "_false.js",
+      "_paths.js",
       "_environment.js"
     ]
   },
@@ -98,7 +105,7 @@
     "isEntry": true,
     "imports": [
       "_false.js",
-      "_environment.js",
+      "_paths.js",
       "_exports.js",
       "_utils.js",
       "_internal.js",
@@ -120,11 +127,12 @@
       "_index.js",
       "_exports.js",
       "_utils.js",
+      "_paths.js",
       "_state.svelte.js"
     ],
     "css": [
       "_app/immutable/assets/_layout.BdpqRjtK.css",
-      "_app/immutable/assets/app.CBURLyFJ.css"
+      "_app/immutable/assets/app.p1yRLc4W.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -154,7 +162,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/app.CBURLyFJ.css"
+      "_app/immutable/assets/app.p1yRLc4W.css"
     ]
   },
   "src/routes/place-order/[drink]/+page.js": {
@@ -176,7 +184,7 @@
       "_storedOrder.js"
     ],
     "css": [
-      "_app/immutable/assets/app.CBURLyFJ.css"
+      "_app/immutable/assets/app.p1yRLc4W.css"
     ]
   },
   "src/routes/place-order/[drink]/confirm/+page.svelte": {
@@ -198,7 +206,7 @@
     "src": "src/routes/place-order/[drink]/confirm/order-confirmation/+page.svelte",
     "isEntry": true,
     "css": [
-      "_app/immutable/assets/app.CBURLyFJ.css"
+      "_app/immutable/assets/app.p1yRLc4W.css"
     ]
   }
 }
