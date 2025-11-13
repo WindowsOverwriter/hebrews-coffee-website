@@ -139,7 +139,11 @@
     "file": "entries/pages/_page.svelte.js",
     "name": "entries/pages/_page.svelte",
     "src": "src/routes/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_paths.js"
+    ]
   },
   "src/routes/check-order/+page.svelte": {
     "file": "entries/pages/check-order/_page.svelte.js",
@@ -159,7 +163,8 @@
     "src": "src/routes/place-order/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js"
+      "_index.js",
+      "_paths.js"
     ],
     "css": [
       "_app/immutable/assets/app.p1yRLc4W.css"
@@ -196,6 +201,7 @@
       "_index.js",
       "_exports.js",
       "_utils.js",
+      "_paths.js",
       "_state.svelte.js",
       "_storedOrder.js"
     ]
@@ -205,6 +211,10 @@
     "name": "entries/pages/place-order/_drink_/confirm/order-confirmation/_page.svelte",
     "src": "src/routes/place-order/[drink]/confirm/order-confirmation/+page.svelte",
     "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_paths.js"
+    ],
     "css": [
       "_app/immutable/assets/app.p1yRLc4W.css"
     ]

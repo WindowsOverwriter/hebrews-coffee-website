@@ -1,0 +1,1 @@
+import"../chunks/DsnmJJEf.js";import"../chunks/pDtgKXZk.js";import{f as a,a as t}from"../chunks/D7JtEr4O.js";var p=a("<h1>Sorry, this page is not available for your project</h1>");function n(o){var r=p();t(o,r)}export{n as component};

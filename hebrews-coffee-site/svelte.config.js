@@ -4,6 +4,7 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
 	kit: {
 		prerender: {
+			crawl: true,
 			entries: [
 				'/',
 				'/place-order',
@@ -14,7 +15,10 @@ const config = {
 				'/place-order/dirty-chai-latte',
 				'/place-order/london-fog',
 				'/place-order/hot-chocolate',
-				'/place-order/iced-tea'
+				'/place-order/iced-tea',
+				'/place-order/[drink]',
+				'/place-order/[drink]/confirm',
+				'/place-order/[drink]/confirm/order-confirmation'
 			]
 		},
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
