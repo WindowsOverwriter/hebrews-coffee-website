@@ -5,22 +5,8 @@ import path from 'path';
 const config = {
         kit: {
                 prerender: {
-                        crawl: true,
-                        entries: [
-                                '/',
-                                '/place-order',
-                                '/place-order/latte',
-                                '/place-order/americano',
-                                '/place-order/cold-brew',
-                                '/place-order/chai-latte',
-                                '/place-order/dirty-chai-latte',
-                                '/place-order/london-fog',
-                                '/place-order/hot-chocolate',
-                                '/place-order/iced-tea',
-                                '/place-order/[drink]',
-                                '/place-order/[drink]/confirm',
-                                '/place-order/[drink]/confirm/order-confirmation'
-                        ]
+                        handleHttpError: 'warn',
+                        handleMissingId: 'warn'
                 },
                 adapter: adapter({
                         pages: path.resolve('../build'),
