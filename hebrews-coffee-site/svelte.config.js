@@ -5,8 +5,8 @@ import path from 'path';
 const config = {
         kit: {
                 prerender: {
-                        handleHttpError: 'warn',
-                        handleMissingId: 'warn'
+                        handleHttpError: 'ignore',
+                        handleMissingId: 'ignore'
                 },
                 adapter: adapter({
                         pages: path.resolve('../build'),

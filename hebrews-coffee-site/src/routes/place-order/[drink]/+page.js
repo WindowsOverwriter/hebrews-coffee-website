@@ -5,5 +5,3 @@ export function load({params})
         drink
     };
 }
-
-export const prerender = false;
