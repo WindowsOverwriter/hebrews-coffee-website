@@ -14,10 +14,6 @@ return {
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
-			__memo(() => import('./nodes/2.js')),
-			__memo(() => import('./nodes/3.js')),
-			__memo(() => import('./nodes/4.js')),
-			__memo(() => import('./nodes/5.js')),
 			__memo(() => import('./nodes/6.js')),
 			__memo(() => import('./nodes/7.js')),
 			__memo(() => import('./nodes/8.js'))
@@ -27,56 +23,28 @@ return {
 		},
 		routes: [
 			{
-				id: "/",
-				pattern: /^\/$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 2 },
-				endpoint: null
-			},
-			{
-				id: "/check-order",
-				pattern: /^\/check-order\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 3 },
-				endpoint: null
-			},
-			{
-				id: "/login",
-				pattern: /^\/login\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
-				endpoint: null
-			},
-			{
-				id: "/place-order",
-				pattern: /^\/place-order\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
-				endpoint: null
-			},
-			{
 				id: "/place-order/[drink]",
 				pattern: /^\/place-order\/([^/]+?)\/?$/,
 				params: [{"name":"drink","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 6 },
+				page: { layouts: [0,], errors: [1,], leaf: 2 },
 				endpoint: null
 			},
 			{
 				id: "/place-order/[drink]/confirm",
 				pattern: /^\/place-order\/([^/]+?)\/confirm\/?$/,
 				params: [{"name":"drink","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 7 },
+				page: { layouts: [0,], errors: [1,], leaf: 3 },
 				endpoint: null
 			},
 			{
 				id: "/place-order/[drink]/confirm/order-confirmation",
 				pattern: /^\/place-order\/([^/]+?)\/confirm\/order-confirmation\/?$/,
 				params: [{"name":"drink","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 8 },
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
 				endpoint: null
 			}
 		],
-		prerendered_routes: new Set([]),
+		prerendered_routes: new Set(["/hebrews-coffee-site/","/hebrews-coffee-site/check-order/","/hebrews-coffee-site/login/","/hebrews-coffee-site/place-order/"]),
 		matchers: async () => {
 			
 			return {  };

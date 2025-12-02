@@ -4,6 +4,8 @@ function load({ params }) {
     drink
   };
 }
+const prerender = false;
 export {
-  load
+  load,
+  prerender
 };

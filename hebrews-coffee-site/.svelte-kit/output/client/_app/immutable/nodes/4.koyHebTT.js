@@ -1,1 +1,0 @@
-import"../chunks/DsnmJJEf.js";import"../chunks/pDtgKXZk.js";import{f as t,a}from"../chunks/D7JtEr4O.js";var n=t("<h1>Login Page Under Construction</h1>");function i(o){var r=n();a(o,r)}export{i as component};
