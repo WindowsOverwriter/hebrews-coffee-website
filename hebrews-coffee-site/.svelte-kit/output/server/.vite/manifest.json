@@ -192,12 +192,6 @@
       "_app/immutable/assets/app.p1yRLc4W.css"
     ]
   },
-  "src/routes/place-order/[drink]/confirm/+page.js": {
-    "file": "entries/pages/place-order/_drink_/confirm/_page.js",
-    "name": "entries/pages/place-order/_drink_/confirm/_page",
-    "src": "src/routes/place-order/[drink]/confirm/+page.js",
-    "isEntry": true
-  },
   "src/routes/place-order/[drink]/confirm/+page.svelte": {
     "file": "entries/pages/place-order/_drink_/confirm/_page.svelte.js",
     "name": "entries/pages/place-order/_drink_/confirm/_page.svelte",
@@ -211,12 +205,6 @@
       "_state.svelte.js",
       "_storedOrder.js"
     ]
-  },
-  "src/routes/place-order/[drink]/confirm/order-confirmation/+page.js": {
-    "file": "entries/pages/place-order/_drink_/confirm/order-confirmation/_page.js",
-    "name": "entries/pages/place-order/_drink_/confirm/order-confirmation/_page",
-    "src": "src/routes/place-order/[drink]/confirm/order-confirmation/+page.js",
-    "isEntry": true
   },
   "src/routes/place-order/[drink]/confirm/order-confirmation/+page.svelte": {
     "file": "entries/pages/place-order/_drink_/confirm/order-confirmation/_page.svelte.js",
