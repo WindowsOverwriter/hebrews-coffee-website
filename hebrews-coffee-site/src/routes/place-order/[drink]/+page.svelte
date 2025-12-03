@@ -49,8 +49,8 @@
                     on:click={() => storedOrder.update(o => ({...o, temperature:'hot'}))} 
                     class="temp-button">
                         <img src={$storedOrder.temperature === 'hot' 
-                        ? "{base}/icons/hot_selected.svg" 
-                        : "{base}/icons/hot_deselected.svg"} 
+                        ? `${base}/icons/hot_selected.svg` 
+                        : `${base}/icons/hot_deselected.svg`} 
                         alt="hot drink selector">
                     </button>
                 {/if}
@@ -60,8 +60,8 @@
                     on:click={() => storedOrder.update(o => ({...o, temperature:'iced'}))} 
                     class="temp-button">
                         <img src={$storedOrder.temperature === 'iced' 
-                        ? "{base}/icons/iced_selected.svg" 
-                        : "{base}/icons/iced_deselected.svg"} 
+                        ? `${base}/icons/iced_selected.svg` 
+                        : `${base}/icons/iced_deselected.svg`} 
                         alt="iced drink selector">
                     </button>
                 {/if}
