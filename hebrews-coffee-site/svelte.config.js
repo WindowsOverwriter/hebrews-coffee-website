@@ -14,7 +14,7 @@ const config = {
                         fallback: '404.html'  // CHANGED: was null, now '404.html'
                 }),
                 paths: {
-                        base: '/hebrews-coffee-site',
+                        base: '/hebrews-coffee-site/hebrews-coffee-site',
                         relative: false
                 }
         }
